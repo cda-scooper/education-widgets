@@ -21,4 +21,228 @@
 #calendar-widget .event-emoji {
   font-size: 1.5em;
   margin-right: 10px;
+}
+
+/* Modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 5px;
+}
+
+.close-btn {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Polished calendar buttons */
+.calendar-btn {
+  background: linear-gradient(90deg, #4f8cff 0%, #6edbff 100%);
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 18px;
+  margin-right: 4px;
+  font-size: 1em;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(79,140,255,0.08);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.calendar-btn:hover {
+  background: linear-gradient(90deg, #357ae8 0%, #4fd1ff 100%);
+  box-shadow: 0 4px 12px rgba(79,140,255,0.18);
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 2.2em;
+  height: 2.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.icon-btn:hover {
+  background: #e0f7fa;
+}
+
+.hide-controls .delete-event-btn,
+.hide-controls #add-event-btn {
+  display: none !important;
+}
+
+/* Calendar color themes */
+.theme-default #calendar-grid div,
+.theme-default #calendar-grid .modal-content { background: #fff; color: #222; }
+.theme-blue #calendar-grid div,
+.theme-blue #calendar-grid .modal-content { background: #e3f0ff; color: #1a237e; }
+.theme-green #calendar-grid div,
+.theme-green #calendar-grid .modal-content { background: #e6f9e7; color: #256029; }
+.theme-purple #calendar-grid div,
+.theme-purple #calendar-grid .modal-content { background: #f3e6ff; color: #4b2067; }
+.theme-orange #calendar-grid div,
+.theme-orange #calendar-grid .modal-content { background: #fff4e3; color: #a35a00; }
+
+#calendar-grid > div { transition: background 0.3s, color 0.3s; }
+
+/* Style the theme select to match calendar buttons */
+#theme-select.calendar-btn {
+  color: #222;
+  background: linear-gradient(90deg, #f5f5f5 0%, #e0e0e0 100%);
+  border: none;
+  border-radius: 20px;
+  padding: 8px 18px;
+  font-size: 1em;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(79,140,255,0.08);
+  transition: background 0.2s, box-shadow 0.2s;
+  appearance: none;
+}
+#theme-select.calendar-btn:focus {
+  outline: 2px solid #4f8cff;
+}
+.theme-blue #theme-select.calendar-btn {
+  color: #1a237e;
+  background: linear-gradient(90deg, #e3f0ff 0%, #b3d1ff 100%);
+}
+.theme-green #theme-select.calendar-btn {
+  color: #256029;
+  background: linear-gradient(90deg, #e6f9e7 0%, #b2e5c6 100%);
+}
+.theme-purple #theme-select.calendar-btn {
+  color: #4b2067;
+  background: linear-gradient(90deg, #f3e6ff 0%, #d1b3ff 100%);
+}
+.theme-orange #theme-select.calendar-btn {
+  color: #a35a00;
+  background: linear-gradient(90deg, #fff4e3 0%, #ffd9b3 100%);
+}
+
+/* Hide theme select with controls */
+.hide-controls #theme-select.hideable-control {
+  display: none !important;
+}
+
+/* Calendar container for theme backgrounds */
+#calendar-container {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(79,140,255,0.10);
+  margin-bottom: 16px;
+  transition: background 0.4s;
+}
+.theme-blue #calendar-container {
+  background: linear-gradient(120deg, #4f8cff 0%, #6edbff 100%);
+}
+.theme-green #calendar-container {
+  background: linear-gradient(120deg, #a8e063 0%, #56ab2f 100%);
+}
+.theme-purple #calendar-container {
+  background: linear-gradient(120deg, #a18cd1 0%, #fbc2eb 100%);
+}
+.theme-orange #calendar-container {
+  background: linear-gradient(120deg, #ffb347 0%, #ffcc33 100%);
+}
+.theme-default #calendar-container {
+  background: #fff;
+}
+
+/* High-contrast calendar day separators */
+#calendar-grid > div > div {
+  border: 1px solid #222 !important;
+  box-sizing: border-box;
+  background-clip: padding-box;
+}
+.theme-blue #calendar-grid > div > div,
+.theme-green #calendar-grid > div > div,
+.theme-purple #calendar-grid > div > div,
+.theme-orange #calendar-grid > div > div {
+  border: 1px solid #222 !important;
+}
+
+/* Themed modal backgrounds */
+.theme-blue #event-modal .modal-content {
+  background: linear-gradient(120deg, #4f8cff 0%, #6edbff 100%);
+  color: #1a237e;
+}
+.theme-green #event-modal .modal-content {
+  background: linear-gradient(120deg, #a8e063 0%, #56ab2f 100%);
+  color: #256029;
+}
+.theme-purple #event-modal .modal-content {
+  background: linear-gradient(120deg, #a18cd1 0%, #fbc2eb 100%);
+  color: #4b2067;
+}
+.theme-orange #event-modal .modal-content {
+  background: linear-gradient(120deg, #ffb347 0%, #ffcc33 100%);
+  color: #a35a00;
+}
+.theme-default #event-modal .modal-content {
+  background: #fff;
+  color: #222;
+}
+
+/* Stack modal form fields vertically */
+#event-modal .modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+#event-modal input[type="date"],
+#event-modal input[type="text"] {
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #bbb;
+  font-size: 1em;
+  margin-bottom: 0;
+  box-sizing: border-box;
+}
+#save-event-btn {
+  background: linear-gradient(90deg, #4f8cff 0%, #6edbff 100%);
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 18px;
+  font-size: 1em;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(79,140,255,0.08);
+  transition: background 0.2s, box-shadow 0.2s;
+  margin-top: 8px;
+}
+#save-event-btn:hover {
+  background: linear-gradient(90deg, #357ae8 0%, #4fd1ff 100%);
+  box-shadow: 0 4px 12px rgba(79,140,255,0.18);
 } 
