@@ -154,4 +154,50 @@
       eventModal.style.display = 'none';
     }
   });
+
+  // --- Toggle controls visibility ---
+  const toggleBtn = document.getElementById('toggle-visibility');
+  let controlsVisible = true;
+  toggleBtn.addEventListener('click', function() {
+    controlsVisible = !controlsVisible;
+    document.body.classList.toggle('hide-controls', !controlsVisible);
+    toggleBtn.innerHTML = controlsVisible ? '👁️' : '🙈';
+  });
+
+  // --- Help modal logic ---
+  const helpBtn = document.getElementById('help-btn');
+  const helpModal = document.getElementById('help-modal');
+  const closeHelpBtn = document.querySelector('.close-help-btn');
+  helpBtn.addEventListener('click', () => {
+    helpModal.style.display = 'block';
+  });
+  closeHelpBtn.addEventListener('click', () => {
+    helpModal.style.display = 'none';
+  });
+  window.addEventListener('click', (event) => {
+    if (event.target === helpModal) {
+      helpModal.style.display = 'none';
+    }
+  });
+
+  // --- Theme selection logic ---
+  const themeSelect = document.getElementById('theme-select');
+  function applyTheme(theme) {
+    document.body.classList.remove('theme-default', 'theme-blue', 'theme-green', 'theme-purple', 'theme-orange');
+    document.body.classList.add('theme-' + theme);
+    localStorage.setItem('calendar-theme', theme);
+  }
+  // Load theme from localStorage
+  const savedTheme = localStorage.getItem('calendar-theme') || 'default';
+  themeSelect.value = savedTheme;
+  applyTheme(savedTheme);
+  themeSelect.addEventListener('change', function() {
+    applyTheme(this.value);
+  });
+
+  const emojiInput = document.getElementById('event-emoji');
+  const emojiPicker = document.getElementById('emoji-picker');
+  emojiPicker.addEventListener('emoji-click', event => {
+    emojiInput.value = event.detail.unicode;
+  });
 })(); 

@@ -7,20 +7,47 @@
   <script src="classroomCalendarWidget.js" defer></script>
 </head>
 <body>
-  <div style="margin-bottom: 10px;">
-    <button id="view-7">7-Day View</button>
-    <button id="view-30">30-Day View</button>
+  <div style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+    <button id="view-7" class="calendar-btn">7-Day View</button>
+    <button id="view-30" class="calendar-btn">30-Day View</button>
+    <button id="toggle-visibility" class="icon-btn" title="Show/Hide Controls" style="font-size: 1.3em;">👁️</button>
+    <button id="help-btn" class="icon-btn" title="Help" style="font-size: 1.3em;">❓</button>
   </div>
-  <div id="calendar-grid"></div>
-  <button id="add-event-btn">➕ Add Event</button>
+  <div id="calendar-container">
+    <div id="calendar-grid"></div>
+  </div>
+  <div style="margin: 10px 0; display: flex; align-items: center; gap: 10px;">
+    <button id="add-event-btn" class="calendar-btn">➕ Add Event</button>
+    <select id="theme-select" class="calendar-btn hideable-control" style="width: auto;">
+      <option value="default">Default</option>
+      <option value="blue">Blue</option>
+      <option value="green">Green</option>
+      <option value="purple">Purple</option>
+      <option value="orange">Orange</option>
+    </select>
+  </div>
   <div id="event-modal" class="modal" style="display: none;">
     <div class="modal-content">
       <span class="close-btn">&times;</span>
       <h2>Add New Event</h2>
       <input type="date" id="event-date" placeholder="Date">
       <input type="text" id="event-description" placeholder="Description">
-      <input type="text" id="event-emoji" placeholder="Emoji">
+      <input type="text" id="event-emoji" placeholder="Emoji" maxlength="2" style="width: 60px; display: inline-block;">
+      <emoji-picker id="emoji-picker" style="width: 100%;"></emoji-picker>
+      <script type="module" src="https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/index.js"></script>
       <button id="save-event-btn">Save Event</button>
+    </div>
+  </div>
+  <div id="help-modal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <span class="close-help-btn">&times;</span>
+      <h2>How to Use the Classroom Calendar Widget</h2>
+      <ul>
+        <li>Switch between 7-day and 30-day views using the buttons above.</li>
+        <li>Click <b>➕ Add Event</b> to add a new event to the calendar.</li>
+        <li>Click the <b>🗑️</b> icon on a day to delete an event.</li>
+        <li>Use the <b>👁️</b> icon to show or hide the event controls.</li>
+      </ul>
     </div>
   </div>
 </body>
