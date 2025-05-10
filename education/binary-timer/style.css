@@ -1,0 +1,188 @@
+/* Container and binary display styles */
+#timer-container {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(79,140,255,0.10);
+  margin-bottom: 16px;
+  background: #fff;
+  transition: background 0.4s;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+#binary-display {
+  background: #000;
+  border-radius: 12px;
+  padding: 20px 40px;
+  text-align: center;
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+  margin: 20px auto;
+  min-width: 320px;
+}
+
+#timer-display {
+  font-family: 'Digital-7', 'Courier New', monospace;
+  font-size: 2.8em;
+  font-weight: bold;
+  color: #00ff00;
+  text-shadow: 0 0 10px rgba(0,255,0,0.5);
+  letter-spacing: 4px;
+  margin-bottom: 5px;
+  word-spacing: 12px;
+}
+
+#timer-label {
+  color: #fff;
+  font-size: 0.9em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+#timer-controls {
+  display: flex;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+#timer-input {
+  display: flex;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+#timer-input input {
+  width: 80px;
+  padding: 8px;
+  border: 1px solid #bbb;
+  border-radius: 8px;
+  font-size: 1em;
+  text-align: center;
+}
+
+/* Button styles */
+.timer-btn {
+  background: linear-gradient(90deg, #4f8cff 0%, #6edbff 100%);
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 18px;
+  font-size: 1em;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(79,140,255,0.08);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.timer-btn:hover:not(:disabled) {
+  background: linear-gradient(90deg, #357ae8 0%, #4fd1ff 100%);
+  box-shadow: 0 4px 12px rgba(79,140,255,0.18);
+}
+
+.timer-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 2.2em;
+  height: 2.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.icon-btn:hover {
+  background: #e0f7fa;
+}
+
+.hide-controls .timer-btn.hideable-control,
+.hide-controls #timer-input {
+  display: none !important;
+}
+
+/* Modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 90%;
+  max-width: 500px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.close-help-btn {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close-help-btn:hover {
+  color: black;
+  text-decoration: none;
+}
+
+/* Theme styles */
+.theme-default #timer-container { background: #fff; color: #000; }
+.theme-blue #timer-container { background: linear-gradient(120deg, #4f8cff 0%, #6edbff 100%); color: #000; }
+.theme-green #timer-container { background: linear-gradient(120deg, #a8e063 0%, #56ab2f 100%); color: #000; }
+.theme-purple #timer-container { background: linear-gradient(120deg, #a18cd1 0%, #fbc2eb 100%); color: #000; }
+.theme-orange #timer-container { background: linear-gradient(120deg, #ff6b6b 0%, #ff8e8e 100%); color: #000; }
+
+/* Theme-specific LED colors for binary */
+.theme-default #timer-display { color: #00ff00; text-shadow: 0 0 10px rgba(0,255,0,0.5); }
+.theme-blue #timer-display { color: #00ffff; text-shadow: 0 0 10px rgba(0,255,255,0.5); }
+.theme-green #timer-display { color: #00ff00; text-shadow: 0 0 10px rgba(0,255,0,0.5); }
+.theme-purple #timer-display { color: #ff00ff; text-shadow: 0 0 10px rgba(255,0,255,0.5); }
+.theme-orange #timer-display { color: #ff8800; text-shadow: 0 0 10px rgba(255,136,0,0.5); }
+
+#theme-select.timer-btn {
+  color: #000;
+  background: linear-gradient(90deg, #f5f5f5 0%, #e0e0e0 100%);
+}
+
+.theme-blue #theme-select.timer-btn {
+  color: #000;
+  background: linear-gradient(90deg, #e3f0ff 0%, #b3d1ff 100%);
+}
+
+.theme-green #theme-select.timer-btn {
+  color: #000;
+  background: linear-gradient(90deg, #e6f9e7 0%, #b2e5c6 100%);
+}
+
+.theme-purple #theme-select.timer-btn {
+  color: #000;
+  background: linear-gradient(90deg, #f3e6ff 0%, #d1b3ff 100%);
+}
+
+.theme-orange #theme-select.timer-btn {
+  color: #000;
+  background: linear-gradient(90deg, #ffe6e6 0%, #ffb3b3 100%);
+} 
