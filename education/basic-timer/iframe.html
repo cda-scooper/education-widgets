@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Basic Timer Widget</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+    <button id="toggle-visibility" class="icon-btn" title="Show/Hide Controls" style="font-size: 1.3em;">👁️</button>
+    <button id="help-btn" class="icon-btn" title="Help" style="font-size: 1.3em;">❓</button>
+  </div>
+  <div id="timer-container">
+    <div id="clock-face">
+      <div id="hour-hand"></div>
+      <div id="minute-hand"></div>
+      <div id="second-hand"></div>
+      <div id="center-dot"></div>
+      <div id="timer-display">00:00</div>
+    </div>
+    <div id="timer-controls">
+      <button id="start-timer" class="timer-btn">▶️ Start</button>
+      <button id="pause-timer" class="timer-btn" disabled>⏸️ Pause</button>
+      <button id="reset-timer" class="timer-btn">🔄 Reset</button>
+    </div>
+    <div id="timer-input">
+      <input type="number" id="minutes" min="0" max="60" value="5" placeholder="Minutes">
+      <input type="number" id="seconds" min="0" max="59" value="0" placeholder="Seconds">
+    </div>
+  </div>
+  <div style="margin: 10px 0; display: flex; align-items: center; gap: 10px;">
+    <select id="theme-select" class="timer-btn hideable-control" style="width: auto;">
+      <option value="default">Default</option>
+      <option value="blue">Blue</option>
+      <option value="green">Green</option>
+      <option value="purple">Purple</option>
+      <option value="orange">Orange</option>
+    </select>
+  </div>
+  <div id="help-modal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <span class="close-help-btn">&times;</span>
+      <h2>How to Use the Basic Timer Widget</h2>
+      <ul>
+        <li>Set the desired time using the minutes and seconds inputs.</li>
+        <li>Click <b>▶️ Start</b> to begin the timer.</li>
+        <li>Use <b>⏸️ Pause</b> to pause the timer.</li>
+        <li>Click <b>🔄 Reset</b> to reset the timer to your set time.</li>
+        <li>Use the <b>👁️</b> icon to show or hide the controls.</li>
+        <li>Choose a theme to change the timer's appearance.</li>
+      </ul>
+    </div>
+  </div>
+  <script src="basicTimerWidget.js" defer></script>
+</body>
+</html> 
