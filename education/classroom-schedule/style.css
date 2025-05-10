@@ -1,0 +1,204 @@
+/* Container and list styles */
+#schedule-container {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(79,140,255,0.10);
+  margin-bottom: 16px;
+  background: #fff;
+  transition: background 0.4s;
+  padding: 0;
+}
+#schedule-list {
+  width: 100%;
+  padding: 0;
+}
+.schedule-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+  border-bottom: 1px solid #222;
+  font-size: 1.1em;
+  background: transparent;
+  color: #000;
+}
+.schedule-item:last-child {
+  border-bottom: none;
+}
+.schedule-time {
+  font-weight: bold;
+  margin-right: 10px;
+}
+.schedule-emoji {
+  font-size: 1.5em;
+  margin-right: 10px;
+}
+.schedule-task {
+  flex: 1;
+  margin-right: 10px;
+}
+.delete-schedule-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2em;
+  color: #d32f2f;
+  margin-left: 10px;
+}
+.delete-schedule-btn:hover {
+  color: #b71c1c;
+}
+
+/* Polished calendar buttons */
+.calendar-btn {
+  background: linear-gradient(90deg, #4f8cff 0%, #6edbff 100%);
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 18px;
+  margin-right: 4px;
+  font-size: 1em;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(79,140,255,0.08);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.calendar-btn:hover {
+  background: linear-gradient(90deg, #357ae8 0%, #4fd1ff 100%);
+  box-shadow: 0 4px 12px rgba(79,140,255,0.18);
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 2.2em;
+  height: 2.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.icon-btn:hover {
+  background: #e0f7fa;
+}
+
+.hide-controls .delete-schedule-btn,
+.hide-controls #add-schedule-btn {
+  display: none !important;
+}
+
+/* Modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+}
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 90%;
+  max-width: 500px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.close-btn, .close-help-btn {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.close-btn:hover, .close-help-btn:hover {
+  color: black;
+  text-decoration: none;
+}
+#schedule-modal input[type="time"],
+#schedule-modal input[type="text"] {
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #bbb;
+  font-size: 1em;
+  margin-bottom: 0;
+  box-sizing: border-box;
+}
+#save-schedule-btn {
+  background: linear-gradient(90deg, #4f8cff 0%, #6edbff 100%);
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 18px;
+  font-size: 1em;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(79,140,255,0.08);
+  transition: background 0.2s, box-shadow 0.2s;
+  margin-top: 8px;
+}
+#save-schedule-btn:hover {
+  background: linear-gradient(90deg, #357ae8 0%, #4fd1ff 100%);
+  box-shadow: 0 4px 12px rgba(79,140,255,0.18);
+}
+
+/* Schedule color themes */
+.theme-default #schedule-container,
+.theme-default #schedule-modal .modal-content { background: #fff; color: #000; }
+.theme-blue #schedule-container,
+.theme-blue #schedule-modal .modal-content { background: linear-gradient(120deg, #4f8cff 0%, #6edbff 100%); color: #000; }
+.theme-green #schedule-container,
+.theme-green #schedule-modal .modal-content { background: linear-gradient(120deg, #a8e063 0%, #56ab2f 100%); color: #000; }
+.theme-purple #schedule-container,
+.theme-purple #schedule-modal .modal-content { background: linear-gradient(120deg, #a18cd1 0%, #fbc2eb 100%); color: #000; }
+.theme-orange #schedule-container,
+.theme-orange #schedule-modal .modal-content { background: linear-gradient(120deg, #ff6b6b 0%, #ff8e8e 100%); color: #000; }
+
+#schedule-container { transition: background 0.3s, color 0.3s; }
+#theme-select.calendar-btn {
+  color: #222;
+  background: linear-gradient(90deg, #f5f5f5 0%, #e0e0e0 100%);
+  border: none;
+  border-radius: 20px;
+  padding: 8px 18px;
+  font-size: 1em;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(79,140,255,0.08);
+  transition: background 0.2s, box-shadow 0.2s;
+  appearance: none;
+}
+#theme-select.calendar-btn:focus {
+  outline: 2px solid #4f8cff;
+}
+.theme-blue #theme-select.calendar-btn {
+  color: #1a237e;
+  background: linear-gradient(90deg, #e3f0ff 0%, #b3d1ff 100%);
+}
+.theme-green #theme-select.calendar-btn {
+  color: #256029;
+  background: linear-gradient(90deg, #e6f9e7 0%, #b2e5c6 100%);
+}
+.theme-purple #theme-select.calendar-btn {
+  color: #4b2067;
+  background: linear-gradient(90deg, #f3e6ff 0%, #d1b3ff 100%);
+}
+.theme-orange #theme-select.calendar-btn {
+  color: #000;
+  background: linear-gradient(90deg, #ffe6e6 0%, #ffb3b3 100%);
+}
+
+.hide-controls #theme-select.hideable-control {
+  display: none !important;
+} 
