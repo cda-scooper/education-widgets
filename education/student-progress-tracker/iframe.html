@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Progress Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+    <button id="toggle-visibility" class="icon-btn" title="Show/Hide Controls" style="font-size: 1.3em;">👁️</button>
+    <button id="help-btn" class="icon-btn" title="Help" style="font-size: 1.3em;">❓</button>
+  </div>
+  <div id="progress-tracker-container">
+    <div id="goal-controls" class="hideable-control">
+      <input id="goal-input" type="text" class="tracker-input" placeholder="Add a new goal...">
+      <button id="add-goal-btn" class="tracker-btn">➕ Add Goal</button>
+    </div>
+    <div id="goals-list">
+      <!-- Goals, objectives, and students will be rendered here -->
+    </div>
+    <div style="margin: 16px 0; display: flex; align-items: center; gap: 10px;">
+      <button id="export-csv-btn" class="tracker-btn">📤 Export CSV</button>
+      <select id="theme-select" class="tracker-btn hideable-control" style="width: auto;">
+        <option value="default">Default</option>
+        <option value="blue">Blue</option>
+        <option value="green">Green</option>
+        <option value="purple">Purple</option>
+        <option value="orange">Orange</option>
+      </select>
+    </div>
+  </div>
+  <div id="help-modal" class="modal">
+    <div class="modal-content">
+      <span id="close-help-btn" class="close-help-btn">&times;</span>
+      <h2>How to Use the Student Progress Tracker</h2>
+      <ul>
+        <li>Add a goal, then add objectives under each goal.</li>
+        <li>Add students under each objective.</li>
+        <li>For each student, select an assessment and add notes as needed.</li>
+        <li>Use the export button to download all data as a CSV file.</li>
+        <li>Change the theme or hide controls as desired.</li>
+      </ul>
+    </div>
+  </div>
+  <script src="studentProgressTracker.js" defer></script>
+</body>
+</html> 

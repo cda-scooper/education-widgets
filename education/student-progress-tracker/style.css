@@ -1,0 +1,234 @@
+/* Container styles */
+#progress-tracker-container {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(79,140,255,0.10);
+  margin-bottom: 16px;
+  background: #fff;
+  transition: background 0.4s;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Input and button styles */
+.tracker-input {
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-size: 1em;
+  margin-right: 8px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.tracker-input:focus {
+  border-color: #4f8cff;
+}
+
+.tracker-btn {
+  background: linear-gradient(90deg, #4f8cff 0%, #6edbff 100%);
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 18px;
+  font-size: 1em;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(79,140,255,0.08);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.tracker-btn:hover:not(:disabled) {
+  background: linear-gradient(90deg, #357ae8 0%, #4fd1ff 100%);
+  box-shadow: 0 4px 12px rgba(79,140,255,0.18);
+}
+.tracker-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 2.2em;
+  height: 2.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.icon-btn:hover {
+  background: #e0f7fa;
+}
+
+.hide-controls .tracker-btn.hideable-control,
+.hide-controls #goal-controls {
+  display: none !important;
+}
+
+/* Goal, objective, and student list styles */
+.goal-block {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 18px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.goal-title {
+  font-size: 1.2em;
+  font-weight: 600;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.objective-block {
+  background: #f3f6fa;
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 12px;
+  margin-left: 18px;
+}
+.objective-title {
+  font-size: 1.1em;
+  font-weight: 500;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.student-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 8px;
+  margin-top: 8px;
+}
+.student-table th, .student-table td {
+  padding: 6px 10px;
+  text-align: left;
+}
+.student-table th {
+  color: #4f8cff;
+  font-size: 0.95em;
+  font-weight: 600;
+  background: none;
+}
+.student-table td {
+  background: #fff;
+  border-radius: 8px;
+  vertical-align: top;
+}
+.student-name-input {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 4px 10px;
+  font-size: 1em;
+  width: 120px;
+}
+.assessment-select {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 4px 10px;
+  font-size: 1em;
+  background: #f8f9fa;
+}
+.notes-area {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 4px 10px;
+  font-size: 1em;
+  width: 160px;
+  min-height: 32px;
+  resize: vertical;
+}
+.remove-btn {
+  background: none;
+  border: none;
+  color: #ff6b6b;
+  font-size: 1.2em;
+  cursor: pointer;
+  border-radius: 50%;
+  padding: 2px 6px;
+  margin-left: 4px;
+  transition: background 0.2s;
+}
+.remove-btn:hover {
+  background: #ffe6e6;
+}
+
+#progress-tracker-container.hide-controls .remove-btn {
+  display: none !important;
+}
+
+/* Modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+}
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 90%;
+  max-width: 500px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.close-help-btn {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.close-help-btn:hover {
+  color: black;
+  text-decoration: none;
+}
+
+/* Theme styles */
+#progress-tracker-container.theme-default { background: #fff; }
+#progress-tracker-container.theme-blue { background: linear-gradient(120deg, #4f8cff 0%, #6edbff 100%); }
+#progress-tracker-container.theme-green { background: linear-gradient(120deg, #a8e063 0%, #56ab2f 100%); }
+#progress-tracker-container.theme-purple { background: linear-gradient(120deg, #a18cd1 0%, #fbc2eb 100%); }
+#progress-tracker-container.theme-orange { background: linear-gradient(120deg, #ff6b6b 0%, #ff8e8e 100%); }
+
+#progress-tracker-container.theme-default .goal-block { background: #f8f9fa; }
+#progress-tracker-container.theme-blue .goal-block { background: rgba(255,255,255,0.9); }
+#progress-tracker-container.theme-green .goal-block { background: rgba(255,255,255,0.9); }
+#progress-tracker-container.theme-purple .goal-block { background: rgba(255,255,255,0.9); }
+#progress-tracker-container.theme-orange .goal-block { background: rgba(255,255,255,0.9); }
+
+#theme-select.tracker-btn {
+  color: #000;
+  background: linear-gradient(90deg, #f5f5f5 0%, #e0e0e0 100%);
+}
+#progress-tracker-container.theme-blue #theme-select.tracker-btn {
+  color: #000;
+  background: linear-gradient(90deg, #e3f0ff 0%, #b3d1ff 100%);
+}
+#progress-tracker-container.theme-green #theme-select.tracker-btn {
+  color: #000;
+  background: linear-gradient(90deg, #e6f9e7 0%, #b2e5c6 100%);
+}
+#progress-tracker-container.theme-purple #theme-select.tracker-btn {
+  color: #000;
+  background: linear-gradient(90deg, #f3e6ff 0%, #d1b3ff 100%);
+}
+#progress-tracker-container.theme-orange #theme-select.tracker-btn {
+  color: #000;
+  background: linear-gradient(90deg, #ffe6e6 0%, #ffb3b3 100%);
+} 
