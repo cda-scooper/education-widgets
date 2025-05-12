@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Point Tracker Widget</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div style="margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
+    <button id="toggle-visibility" class="icon-btn" title="Show/Hide Controls" style="font-size: 1.3em;">👁️</button>
+    <button id="help-btn" class="icon-btn" title="Help" style="font-size: 1.3em;">❓</button>
+  </div>
+  <div id="tracker-container">
+    <div id="point-controls" class="hideable-control">
+      <div class="control-group">
+        <select id="point-interval" class="timer-btn">
+          <option value="1">+/- 1 point</option>
+          <option value="2">+/- 2 points</option>
+          <option value="5">+/- 5 points</option>
+          <option value="10">+/- 10 points</option>
+        </select>
+      </div>
+      <div class="control-group">
+        <button id="add-team-btn" class="timer-btn">➕ Add Team</button>
+      </div>
+    </div>
+    <div id="teams-list">
+      <!-- Teams will be added here dynamically -->
+    </div>
+  </div>
+  <div style="margin: 10px 0; display: flex; align-items: center; gap: 10px;">
+    <select id="theme-select" class="timer-btn hideable-control" style="width: auto;">
+      <option value="default">Default</option>
+      <option value="blue">Blue</option>
+      <option value="green">Green</option>
+      <option value="purple">Purple</option>
+      <option value="orange">Orange</option>
+    </select>
+  </div>
+  <div id="help-modal" class="modal">
+    <div class="modal-content">
+      <span id="close-help-btn" class="close-help-btn">&times;</span>
+      <h2>How to Use the Point Tracker Widget</h2>
+      <ul>
+        <li>Click <b>➕ Add Team</b> to create a new team.</li>
+        <li>Select a point interval from the dropdown (1, 2, 5, or 10 points).</li>
+        <li>Use <b>➕</b> and <b>➖</b> buttons to add or subtract points.</li>
+        <li>Click the emoji to change it for each team.</li>
+        <li>Use the <b>👁️</b> icon to show or hide the controls.</li>
+        <li>Choose a theme to change the tracker's appearance.</li>
+      </ul>
+    </div>
+  </div>
+  <script src="pointTrackerWidget.js" defer></script>
+</body>
+</html> 
