@@ -13,8 +13,10 @@ document.addEventListener('DOMContentLoaded', function() {
   const closeHelpBtn = document.getElementById('close-help-btn');
   const hideControlsBtn = document.getElementById('toggle-visibility');
 
-  // Unique storage key (widget ID or hostname)
-  const widgetId = container.getAttribute('data-widget-id') || window.location.hostname;
+  // Extract ?embed=... from URL, then fallback to data-widget-id, then hostname
+  const urlParams = new URLSearchParams(window.location.search);
+  const urlEmbedId = urlParams.get('embed');
+  const widgetId = urlEmbedId || container.getAttribute('data-widget-id') || window.location.hostname;
   const DATA_KEY = `studentProgressData-${widgetId}`;
   const THEME_KEY = `studentProgressTheme-${widgetId}`;
 
