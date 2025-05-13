@@ -13,12 +13,17 @@ document.addEventListener('DOMContentLoaded', function() {
   const closeHelpBtn = document.getElementById('close-help-btn');
   const hideControlsBtn = document.getElementById('toggle-visibility');
 
+  // Unique storage key (widget ID or hostname)
+  const widgetId = container.getAttribute('data-widget-id') || window.location.hostname;
+  const DATA_KEY = `studentProgressData-${widgetId}`;
+  const THEME_KEY = `studentProgressTheme-${widgetId}`;
+
   // Data structure
   let data = [];
 
   // Load from localStorage
   function loadData() {
-    const saved = localStorage.getItem('studentProgressData');
+    const saved = localStorage.getItem(DATA_KEY);
     if (saved) {
       data = JSON.parse(saved);
     }
@@ -26,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Save to localStorage
   function saveData() {
-    localStorage.setItem('studentProgressData', JSON.stringify(data));
+    localStorage.setItem(DATA_KEY, JSON.stringify(data));
   }
 
   // Render all goals, objectives, and students
@@ -210,10 +215,10 @@ document.addEventListener('DOMContentLoaded', function() {
   function setTheme(theme) {
     container.classList.remove('theme-default', 'theme-blue', 'theme-green', 'theme-purple', 'theme-orange');
     container.classList.add(`theme-${theme}`);
-    localStorage.setItem('studentProgressTheme', theme);
+    localStorage.setItem(THEME_KEY, theme);
   }
   // Load saved theme
-  const savedTheme = localStorage.getItem('studentProgressTheme') || 'default';
+  const savedTheme = localStorage.getItem(THEME_KEY) || 'default';
   setTheme(savedTheme);
   themeSelect.value = savedTheme;
   themeSelect.addEventListener('change', (e) => setTheme(e.target.value));
