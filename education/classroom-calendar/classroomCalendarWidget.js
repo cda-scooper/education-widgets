@@ -102,12 +102,12 @@
   ];
 
   const loadEvents = () => {
-    const storedEvents = localStorage.getItem('events');
+    const storedEvents = localStorage.getItem(DATA_KEY);
     return storedEvents ? JSON.parse(storedEvents) : defaultEvents.slice();
   };
 
   const saveEvents = (events) => {
-    localStorage.setItem('events', JSON.stringify(events));
+    localStorage.setItem(DATA_KEY, JSON.stringify(events));
   };
 
   let events = loadEvents();
@@ -185,10 +185,10 @@
   function applyTheme(theme) {
     document.body.classList.remove('theme-default', 'theme-blue', 'theme-green', 'theme-purple', 'theme-orange');
     document.body.classList.add('theme-' + theme);
-    localStorage.setItem('calendar-theme', theme);
+    localStorage.setItem(THEME_KEY, theme);
   }
   // Load theme from localStorage
-  const savedTheme = localStorage.getItem('calendar-theme') || 'default';
+  const savedTheme = localStorage.getItem(THEME_KEY) || 'default';
   themeSelect.value = savedTheme;
   applyTheme(savedTheme);
   themeSelect.addEventListener('change', function() {
@@ -200,4 +200,11 @@
   emojiPicker.addEventListener('emoji-click', event => {
     emojiInput.value = event.detail.unicode;
   });
+
+  // Extract ?embed=... from URL, then fallback to data-widget-id, then hostname
+  const urlParams = new URLSearchParams(window.location.search);
+  const urlEmbedId = urlParams.get('embed');
+  const widgetId = urlEmbedId || document.getElementById('calendar-container')?.getAttribute('data-widget-id') || window.location.hostname;
+  const DATA_KEY = `classroomCalendarData-${widgetId}`;
+  const THEME_KEY = `classroomCalendarTheme-${widgetId}`;
 })(); 

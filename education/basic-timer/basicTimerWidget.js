@@ -15,6 +15,13 @@
   const minuteHand = document.getElementById('minute-hand');
   const secondHand = document.getElementById('second-hand');
 
+  // --- Extract ?embed=... from URL, then fallback to data-widget-id, then hostname ---
+  const urlParams = new URLSearchParams(window.location.search);
+  const urlEmbedId = urlParams.get('embed');
+  const widgetId = urlEmbedId || document.getElementById('timer-container')?.getAttribute('data-widget-id') || window.location.hostname;
+  const DATA_KEY = `basicTimerData-${widgetId}`;
+  const THEME_KEY = `basicTimerTheme-${widgetId}`;
+
   // --- Timer functions ---
   function updateTimerDisplay() {
     const minutes = Math.floor(timeLeft / 60);
@@ -140,11 +147,11 @@
   function applyTheme(theme) {
     document.body.classList.remove('theme-default', 'theme-blue', 'theme-green', 'theme-purple', 'theme-orange');
     document.body.classList.add('theme-' + theme);
-    localStorage.setItem('timer-theme', theme);
+    localStorage.setItem(THEME_KEY, theme);
   }
   
   // Load theme from localStorage
-  const savedTheme = localStorage.getItem('timer-theme') || 'default';
+  const savedTheme = localStorage.getItem(THEME_KEY) || 'default';
   themeSelect.value = savedTheme;
   applyTheme(savedTheme);
   

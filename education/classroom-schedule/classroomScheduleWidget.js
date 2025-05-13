@@ -1,12 +1,18 @@
 (function() {
+  // Extract ?embed=... from URL, then fallback to data-widget-id, then hostname
+  const urlParams = new URLSearchParams(window.location.search);
+  const urlEmbedId = urlParams.get('embed');
+  const widgetId = urlEmbedId || document.getElementById('schedule-container')?.getAttribute('data-widget-id') || window.location.hostname;
+  const DATA_KEY = `classroomScheduleData-${widgetId}`;
+  const THEME_KEY = `classroomScheduleTheme-${widgetId}`;
+
   // --- Persistence helpers ---
-  const STORAGE_KEY = 'classroom-schedule-items';
   function loadSchedule() {
-    const stored = localStorage.getItem(STORAGE_KEY);
+    const stored = localStorage.getItem(DATA_KEY);
     return stored ? JSON.parse(stored) : [];
   }
   function saveSchedule(items) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
+    localStorage.setItem(DATA_KEY, JSON.stringify(items));
   }
 
   // --- Render schedule list ---
@@ -112,10 +118,10 @@
   function applyTheme(theme) {
     document.body.classList.remove('theme-default', 'theme-blue', 'theme-green', 'theme-purple', 'theme-orange');
     document.body.classList.add('theme-' + theme);
-    localStorage.setItem('schedule-theme', theme);
+    localStorage.setItem(THEME_KEY, theme);
   }
   // Load theme from localStorage
-  const savedTheme = localStorage.getItem('schedule-theme') || 'default';
+  const savedTheme = localStorage.getItem(THEME_KEY) || 'default';
   themeSelect.value = savedTheme;
   applyTheme(savedTheme);
   themeSelect.addEventListener('change', function() {

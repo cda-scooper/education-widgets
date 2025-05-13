@@ -17,6 +17,13 @@ document.addEventListener('DOMContentLoaded', function() {
   let timeLeft = 0;
   let isRunning = false;
 
+  // Extract ?embed=... from URL, then fallback to data-widget-id, then hostname
+  const urlParams = new URLSearchParams(window.location.search);
+  const urlEmbedId = urlParams.get('embed');
+  const widgetId = urlEmbedId || document.getElementById('timer-container')?.getAttribute('data-widget-id') || window.location.hostname;
+  const DATA_KEY = `hieroglyphicTimerData-${widgetId}`;
+  const THEME_KEY = `hieroglyphicTimerTheme-${widgetId}`;
+
   // Hieroglyphic mapping for digits 0-9
   const hieroglyphics = {
     0: '𓄿', // Egyptian hieroglyph for zero
@@ -96,11 +103,11 @@ document.addEventListener('DOMContentLoaded', function() {
   // Theme handling
   function setTheme(theme) {
     timerContainer.className = `theme-${theme}`;
-    localStorage.setItem('hieroglyphicTimerTheme', theme);
+    localStorage.setItem(THEME_KEY, theme);
   }
 
   // Load saved theme
-  const savedTheme = localStorage.getItem('hieroglyphicTimerTheme') || 'default';
+  const savedTheme = localStorage.getItem(THEME_KEY) || 'default';
   setTheme(savedTheme);
   themeSelect.value = savedTheme;
 

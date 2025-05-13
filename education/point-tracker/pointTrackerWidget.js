@@ -13,9 +13,16 @@ document.addEventListener('DOMContentLoaded', function() {
   let teams = [];
   let teamCounter = 1;
 
+  // Extract ?embed=... from URL, then fallback to data-widget-id, then hostname
+  const urlParams = new URLSearchParams(window.location.search);
+  const urlEmbedId = urlParams.get('embed');
+  const widgetId = urlEmbedId || document.getElementById('tracker-container')?.getAttribute('data-widget-id') || window.location.hostname;
+  const DATA_KEY = `pointTrackerTeams-${widgetId}`;
+  const THEME_KEY = `pointTrackerTheme-${widgetId}`;
+
   // Common emojis for team selection
   const commonEmojis = [
-    '🏆', '🌟', '⚡', '🔥', '💫', '🎯', '🎨', '🎭', '🎪', '🎮',
+    '��', '🌟', '⚡', '🔥', '💫', '🎯', '🎨', '🎭', '🎪', '🎮',
     '🏀', '⚽', '🏈', '⚾', '🎾', '🏐', '🏉', '🎱', '🏓', '🏸',
     '🦁', '🐯', '🐼', '🐨', '🦊', '🦒', '🦘', '🦛', '🦏', '🦍'
   ];
@@ -125,12 +132,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Save teams to localStorage
   function saveTeams() {
-    localStorage.setItem('pointTrackerTeams', JSON.stringify(teams));
+    localStorage.setItem(DATA_KEY, JSON.stringify(teams));
   }
 
   // Load teams from localStorage
   function loadTeams() {
-    const savedTeams = localStorage.getItem('pointTrackerTeams');
+    const savedTeams = localStorage.getItem(DATA_KEY);
     if (savedTeams) {
       teams = JSON.parse(savedTeams);
       teamCounter = Math.max(...teams.map(t => t.id)) + 1;
@@ -144,11 +151,11 @@ document.addEventListener('DOMContentLoaded', function() {
     trackerContainer.classList.remove('theme-default', 'theme-blue', 'theme-green', 'theme-purple', 'theme-orange');
     // Add the new theme class
     trackerContainer.classList.add(`theme-${theme}`);
-    localStorage.setItem('pointTrackerTheme', theme);
+    localStorage.setItem(THEME_KEY, theme);
   }
 
   // Load saved theme
-  const savedTheme = localStorage.getItem('pointTrackerTheme') || 'default';
+  const savedTheme = localStorage.getItem(THEME_KEY) || 'default';
   setTheme(savedTheme);
   themeSelect.value = savedTheme;
 

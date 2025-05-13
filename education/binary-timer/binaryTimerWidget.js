@@ -12,6 +12,13 @@
   const secondsInput = document.getElementById('seconds');
   const timerDisplay = document.getElementById('timer-display');
 
+  // --- Extract ?embed=... from URL, then fallback to data-widget-id, then hostname ---
+  const urlParams = new URLSearchParams(window.location.search);
+  const urlEmbedId = urlParams.get('embed');
+  const widgetId = urlEmbedId || document.getElementById('timer-container')?.getAttribute('data-widget-id') || window.location.hostname;
+  const DATA_KEY = `binaryTimerData-${widgetId}`;
+  const THEME_KEY = `binaryTimerTheme-${widgetId}`;
+
   // --- Timer functions ---
   function toBinary(num, bits = 8) {
     return num.toString(2).padStart(bits, '0');
@@ -128,11 +135,11 @@
   function applyTheme(theme) {
     document.body.classList.remove('theme-default', 'theme-blue', 'theme-green', 'theme-purple', 'theme-orange');
     document.body.classList.add('theme-' + theme);
-    localStorage.setItem('binary-timer-theme', theme);
+    localStorage.setItem(THEME_KEY, theme);
   }
   
   // Load theme from localStorage
-  const savedTheme = localStorage.getItem('binary-timer-theme') || 'default';
+  const savedTheme = localStorage.getItem(THEME_KEY) || 'default';
   themeSelect.value = savedTheme;
   applyTheme(savedTheme);
   

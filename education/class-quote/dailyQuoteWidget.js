@@ -29,4 +29,11 @@
       </blockquote>
     `;
   }
+
+  // Extract ?embed=... from URL, then fallback to data-widget-id, then hostname
+  const urlParams = new URLSearchParams(window.location.search);
+  const urlEmbedId = urlParams.get('embed');
+  const widgetId = urlEmbedId || document.body.getAttribute('data-widget-id') || window.location.hostname;
+  const DATA_KEY = `dailyQuoteData-${widgetId}`;
+  const THEME_KEY = `dailyQuoteTheme-${widgetId}`;
 })(); 
