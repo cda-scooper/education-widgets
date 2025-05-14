@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crystal Ball Widget</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="crystal-ball-widget">
+        <div class="widget-header">
+            <h2>Crystal Ball</h2>
+            <div class="header-controls">
+                <input type="color" id="colorPicker" class="color-picker" value="#4a90e2">
+                <div class="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </div>
+                <div class="help-button">
+                    <i class="fas fa-question-circle"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="visibility-toggle">
+            <i class="fas fa-eye"></i>
+        </div>
+        
+        <div class="crystal-container">
+            <div class="crystal-display">
+                <div class="crystal-ball" id="crystalBall">
+                    <div class="crystal-content">
+                        <div class="crystal-glow"></div>
+                        <div class="crystal-galaxy"></div>
+                        <div class="crystal-text" id="crystalText">
+                            Ask your question...
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="crystal-controls">
+                <button class="ask-button" id="askButton">
+                    <i class="fas fa-magic"></i> Ask Question
+                </button>
+                <button class="fortune-button" id="fortuneButton">
+                    <i class="fas fa-star"></i> Get Fortune
+                </button>
+            </div>
+            
+            <div class="answer-history">
+                <div class="history-header">
+                    <h3>Answer History</h3>
+                    <button class="clear-history-button" id="clearHistoryButton">
+                        <i class="fas fa-trash"></i> Clear
+                    </button>
+                </div>
+                <div class="history-list" id="historyList"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Help Modal -->
+    <div class="modal" id="helpModal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Crystal Ball Help</h2>
+            <div class="help-content">
+                <h3>How to Use</h3>
+                <p>1. Click "Ask Question" to get a yes/no/maybe answer</p>
+                <p>2. Click "Get Fortune" for a mystical fortune</p>
+                <p>3. Watch the crystal ball reveal your answer</p>
+                <p>4. Your answer history will be saved for this instance</p>
+                
+                <h3>Features</h3>
+                <ul>
+                    <li>Mystical answers to your questions</li>
+                    <li>Fun fortune generator</li>
+                    <li>Answer history tracking</li>
+                    <li>Dark/Light theme support</li>
+                    <li>Custom color picker</li>
+                    <li>Hide/show controls</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
