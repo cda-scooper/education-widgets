@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noise Meter Widget</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="noise-meter-widget">
+        <div class="widget-header">
+            <h2>Noise Meter</h2>
+            <div class="header-controls">
+                <input type="color" id="colorPicker" class="color-picker" value="#4a90e2">
+                <div class="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </div>
+                <div class="help-button">
+                    <i class="fas fa-question-circle"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="visibility-toggle">
+            <i class="fas fa-eye"></i>
+        </div>
+        
+        <div class="noise-container">
+            <div class="thermometer">
+                <div class="thermometer-bulb" id="thermometerBulb">
+                    <span id="bulbIcon" style="font-size:2rem;">👍</span>
+                </div>
+                <div class="thermometer-stem">
+                    <div class="thermometer-fill" id="noiseLevel"></div>
+                </div>
+                <div class="thermometer-scale">
+                    <span>Loud</span>
+                    <span>Moderate</span>
+                    <span>Quiet</span>
+                </div>
+            </div>
+            
+            <div class="noise-controls">
+                <button class="start-button" id="startButton">
+                    <i class="fas fa-play"></i> Start Monitoring
+                </button>
+                <button class="stop-button" id="stopButton" disabled>
+                    <i class="fas fa-stop"></i> Stop Monitoring
+                </button>
+            </div>
+            
+            <div class="noise-history">
+                <div class="history-header">
+                    <h3>Noise History</h3>
+                    <div style="display: flex; gap: 8px;">
+                        <button class="export-history-button" id="exportHistoryButton">
+                            <i class="fas fa-file-csv"></i> Export
+                        </button>
+                        <button class="clear-history-button" id="clearHistoryButton">
+                            <i class="fas fa-trash"></i> Clear
+                        </button>
+                    </div>
+                </div>
+                <div class="history-list" id="historyList"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Permission Modal -->
+    <div class="modal" id="permissionModal">
+        <div class="modal-content">
+            <h2>Microphone Access Required</h2>
+            <div class="permission-content">
+                <i class="fas fa-microphone permission-icon"></i>
+                <p>This widget needs access to your microphone to monitor classroom noise levels.</p>
+                <p>Please click "Allow" when prompted by your browser.</p>
+                <button class="permission-button" id="requestPermissionButton">
+                    <i class="fas fa-microphone"></i> Request Permission
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Help Modal -->
+    <div class="modal" id="helpModal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Noise Meter Help</h2>
+            <div class="help-content">
+                <h3>How to Use</h3>
+                <p>1. Click "Start Monitoring" to begin measuring noise levels</p>
+                <p>2. The thermometer will show current noise level:</p>
+                <ul>
+                    <li><span class="green-text">Green</span>: Quiet (Good for learning)</li>
+                    <li><span class="yellow-text">Yellow</span>: Moderate (Getting loud)</li>
+                    <li><span class="red-text">Red</span>: Loud (Too noisy)</li>
+                </ul>
+                <p>3. Click "Stop Monitoring" to pause the meter</p>
+                <p>4. Your noise history will be saved for this instance</p>
+                
+                <h3>Features</h3>
+                <ul>
+                    <li>Real-time noise level monitoring</li>
+                    <li>Visual thermometer display</li>
+                    <li>Noise history tracking</li>
+                    <li>Dark/Light theme support</li>
+                    <li>Custom color picker</li>
+                    <li>Hide/show controls</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
