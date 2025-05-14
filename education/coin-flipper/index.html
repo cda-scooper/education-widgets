@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coin Flipper Widget</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="coin-flipper-widget">
+        <div class="widget-header">
+            <h2>Coin Flipper</h2>
+            <div class="header-controls">
+                <input type="color" id="colorPicker" class="color-picker" value="#4a90e2">
+                <div class="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </div>
+                <div class="help-button">
+                    <i class="fas fa-question-circle"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="visibility-toggle">
+            <i class="fas fa-eye"></i>
+        </div>
+        
+        <div class="coin-container">
+            <div class="coin-selector">
+                <select id="coinType">
+                    <option value="heads">Heads</option>
+                    <option value="tails">Tails</option>
+                    <option value="random" selected>Random</option>
+                </select>
+            </div>
+            
+            <div class="coin-display">
+                <div class="coin" id="coin" data-side="heads">
+                    <div class="coin-face heads">
+                        <div class="coin-content">
+                            <img src="images/quarter_head.png" alt="Heads" class="coin-image">
+                        </div>
+                    </div>
+                    <div class="coin-face tails">
+                        <div class="coin-content">
+                            <img src="images/quarter_reverse.png" alt="Tails" class="coin-image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flip-controls">
+                <button class="flip-button" id="flipButton">
+                    <i class="fas fa-sync-alt"></i> Flip
+                </button>
+            </div>
+            
+            <div class="flip-history">
+                <div class="history-header">
+                    <h3>Flip History</h3>
+                    <button class="clear-history-button" id="clearHistoryButton">
+                        <i class="fas fa-trash"></i> Clear
+                    </button>
+                </div>
+                <div class="history-list" id="historyList"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Help Modal -->
+    <div class="modal" id="helpModal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Coin Flipper Help</h2>
+            <div class="help-content">
+                <h3>How to Use</h3>
+                <p>1. Select the type of flip you want to make from the dropdown menu</p>
+                <p>2. Click the "Flip" button to flip the coin</p>
+                <p>3. Watch the animation and see your result</p>
+                <p>4. Your flip history will be saved for this instance</p>
+                
+                <h3>Features</h3>
+                <ul>
+                    <li>Multiple flip options (Heads, Tails, Random)</li>
+                    <li>3D flip animation</li>
+                    <li>Flip history tracking</li>
+                    <li>Dark/Light theme support</li>
+                    <li>Custom color picker</li>
+                    <li>Hide/show controls</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
