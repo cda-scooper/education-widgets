@@ -43,9 +43,9 @@ let animationFrame;
 
 // Noise level thresholds (in dB)
 const THRESHOLDS = {
-    quiet: 30,
-    moderate: 50,
-    loud: 70
+    quiet: 30,      // Quiet: < 30 dB
+    moderate: 60,  // Moderate: 30-60 dB
+    loud: 60       // Loud: > 60 dB
 };
 
 // Theme Management
