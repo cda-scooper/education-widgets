@@ -33,6 +33,12 @@ const visibilityToggle = document.querySelector('.visibility-toggle');
 const thermometerBulb = document.getElementById('thermometerBulb');
 const bulbIcon = document.getElementById('bulbIcon');
 const exportHistoryButton = document.getElementById('exportHistoryButton');
+const calibrateButton = document.getElementById('calibrateButton');
+const calibrateModal = document.getElementById('calibrateModal');
+const calibrateValue = document.getElementById('calibrateValue');
+const setModerateButton = document.getElementById('setModerateButton');
+const setLoudButton = document.getElementById('setLoudButton');
+const closeCalibrateButton = document.getElementById('closeCalibrateButton');
 
 // Audio context and analyzer
 let audioContext;
@@ -182,18 +188,14 @@ async function initializeAudio() {
 
 function calculateNoiseLevel() {
     analyser.getByteFrequencyData(dataArray);
-    
-    // Calculate RMS (Root Mean Square) of the frequency data
     let sum = 0;
     for (let i = 0; i < dataArray.length; i++) {
         sum += dataArray[i] * dataArray[i];
     }
     const rms = Math.sqrt(sum / dataArray.length);
-    
-    // Convert to dB (decibels)
     const db = 20 * Math.log10(rms / 255);
-    
-    return Math.max(0, Math.min(100, db + 50)); // Normalize to 0-100 range
+    lastRawLevel = Math.max(0, Math.min(100, db + 50));
+    return lastRawLevel;
 }
 
 function updateNoiseLevel(level) {
@@ -268,11 +270,44 @@ requestPermissionButton.addEventListener('click', async () => {
     }
 });
 
+// Load thresholds from localStorage or use defaults
+function loadThresholds() {
+    const saved = JSON.parse(localStorage.getItem('noise-thresholds') || '{}');
+    THRESHOLDS.quiet = saved.quiet ?? 30;
+    THRESHOLDS.moderate = saved.moderate ?? 60;
+    THRESHOLDS.loud = saved.loud ?? 60;
+}
+
+function saveThresholds() {
+    localStorage.setItem('noise-thresholds', JSON.stringify(THRESHOLDS));
+}
+
+let lastRawLevel = 0;
+
+calibrateButton.addEventListener('click', () => {
+    calibrateValue.textContent = lastRawLevel.toFixed(2);
+    calibrateModal.style.display = 'block';
+});
+setModerateButton.addEventListener('click', () => {
+    THRESHOLDS.moderate = lastRawLevel;
+    saveThresholds();
+    calibrateModal.style.display = 'none';
+});
+setLoudButton.addEventListener('click', () => {
+    THRESHOLDS.loud = lastRawLevel;
+    saveThresholds();
+    calibrateModal.style.display = 'none';
+});
+closeCalibrateButton.addEventListener('click', () => {
+    calibrateModal.style.display = 'none';
+});
+
 // Initialize
 loadHistory();
 loadTheme();
 loadColor();
 loadVisibility();
+loadThresholds();
 
 // Show permission modal on load
 showPermissionModal(); 

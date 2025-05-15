@@ -385,4 +385,43 @@ body {
 .controls-hidden .header-controls > *:not(.visibility-toggle),
 .controls-hidden .noise-controls {
     display: none;
+}
+
+.calibrate-button {
+    padding: 12px 24px;
+    font-size: 1.1rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.calibrate-button:hover {
+    background-color: var(--hover-color);
+}
+
+.calibrate-content {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.set-moderate-button, .set-loud-button, .close-calibrate-button {
+    padding: 10px 18px;
+    font-size: 1rem;
+    margin: 8px 6px 0 6px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    background-color: var(--primary-color);
+    color: white;
+    transition: background-color 0.3s;
+}
+
+.set-moderate-button:hover, .set-loud-button:hover, .close-calibrate-button:hover {
+    background-color: var(--hover-color);
 } 

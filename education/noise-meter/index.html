@@ -48,6 +48,9 @@
                 <button class="stop-button" id="stopButton" disabled>
                     <i class="fas fa-stop"></i> Stop Monitoring
                 </button>
+                <button class="calibrate-button" id="calibrateButton">
+                    <i class="fas fa-sliders-h"></i> Calibrate
+                </button>
             </div>
             
             <div class="noise-history">
@@ -108,6 +111,20 @@
                     <li>Custom color picker</li>
                     <li>Hide/show controls</li>
                 </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Calibrate Modal -->
+    <div class="modal" id="calibrateModal">
+        <div class="modal-content">
+            <h2>Calibrate Noise Threshold</h2>
+            <div class="calibrate-content">
+                <p>Current noise value: <span id="calibrateValue">0</span></p>
+                <p>Set this value as:</p>
+                <button class="set-moderate-button" id="setModerateButton">Moderate</button>
+                <button class="set-loud-button" id="setLoudButton">Loud</button>
+                <button class="close-calibrate-button" id="closeCalibrateButton">Cancel</button>
             </div>
         </div>
     </div>
