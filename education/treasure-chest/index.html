@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treasure Chest Widget</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="treasure-chest-widget">
+        <div class="widget-header">
+            <h2>Treasure Chest</h2>
+            <div class="header-controls">
+                <input type="color" class="color-picker" id="colorPicker" value="#FFD700">
+                <button class="theme-toggle" id="themeToggle">🌓</button>
+                <button class="settings-button" id="settingsButton">⚙️</button>
+                <button class="visibility-toggle" id="visibilityToggle">👁️</button>
+                <button class="help-button" id="helpButton">❓</button>
+            </div>
+        </div>
+
+        <div class="chest-container">
+            <div class="chest">
+                <div class="chest-lid"></div>
+                <div class="light-rays"></div>
+                <div class="points">0</div>
+            </div>
+        </div>
+
+        <button id="openChest" class="generate-button">Open Treasure Chest</button>
+
+        <div id="helpModal" class="modal">
+            <div class="modal-content">
+                <button class="close-button">×</button>
+                <div class="help-content">
+                    <h3>How to Use</h3>
+                    <p>Click the "Open Treasure Chest" button to reveal a random number of points!</p>
+                    <ul>
+                        <li>🌓 Toggle between light and dark theme</li>
+                        <li>🎨 Change the widget's color</li>
+                        <li>⚙️ Adjust maximum tokens</li>
+                        <li>👁️ Show/hide the widget</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="settingsModal" class="modal">
+            <div class="modal-content">
+                <button class="close-button">×</button>
+                <div class="settings-content">
+                    <h3>Settings</h3>
+                    <div class="form-group">
+                        <label for="maxTokens">Maximum Tokens:</label>
+                        <input type="number" id="maxTokens" min="1" max="100" value="10">
+                    </div>
+                    <button id="saveSettings" class="generate-button">Save Settings</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
