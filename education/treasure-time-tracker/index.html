@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treasure Time Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="treasure-time-tracker">
+        <div class="widget-header">
+            <h2>Reading Time Tracker</h2>
+            <div class="header-controls">
+                <input type="color" class="color-picker" id="colorPicker" value="#FFD700">
+                <button class="theme-toggle" id="themeToggle">🌓</button>
+                <button class="settings-button" id="settingsButton">⚙️</button>
+                <button class="visibility-toggle" id="visibilityToggle">👁️</button>
+                <button class="help-button" id="helpButton">❓</button>
+            </div>
+        </div>
+
+        <div class="main-container">
+            <div class="tracker-container">
+                <div class="student-input">
+                    <div class="form-group">
+                        <input type="text" id="studentName" placeholder="Enter student name" class="student-name-input">
+                        <button id="startReading" class="action-button">Start Reading</button>
+                    </div>
+                </div>
+
+                <div class="reading-list">
+                    <div class="list-header">
+                        <h3>Currently Reading</h3>
+                        <button id="exportCSV" class="export-button">Export to CSV</button>
+                    </div>
+                    <div id="activeReaders" class="readers-list"></div>
+                </div>
+
+                <div class="completed-list">
+                    <div class="list-header">
+                        <h3>Completed Sessions</h3>
+                        <button id="clearCompleted" class="clear-button">Clear List</button>
+                    </div>
+                    <div id="completedReaders" class="readers-list"></div>
+                </div>
+            </div>
+
+            <div class="treasure-chest-sidebar">
+                <div class="chest-container">
+                    <div class="chest">
+                        <div class="chest-lid"></div>
+                        <div class="light-rays"></div>
+                        <div class="points">0</div>
+                    </div>
+                </div>
+                <div class="treasure-message"></div>
+            </div>
+        </div>
+
+        <div id="helpModal" class="modal">
+            <div class="modal-content">
+                <button class="close-button">×</button>
+                <div class="help-content">
+                    <h3>How to Use</h3>
+                    <p>Track student reading time with a fun reward system!</p>
+                    <ul>
+                        <li>Enter student name and click "Start Reading" to begin tracking</li>
+                        <li>Click "Stop Reading" when the student finishes</li>
+                        <li>Students receive a random reward when they complete their reading</li>
+                        <li>Export the reading data to CSV for record keeping</li>
+                        <li>🌓 Toggle between light and dark theme</li>
+                        <li>🎨 Change the widget's color</li>
+                        <li>⚙️ Adjust settings</li>
+                        <li>👁️ Show/hide the widget</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="settingsModal" class="modal">
+            <div class="modal-content">
+                <button class="close-button">×</button>
+                <div class="settings-content">
+                    <h3>Settings</h3>
+                    <div class="form-group">
+                        <label for="maxTokens">Maximum Reward Tokens:</label>
+                        <input type="number" id="maxTokens" min="1" max="100" value="10">
+                    </div>
+                    <button id="saveSettings" class="generate-button">Save Settings</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
