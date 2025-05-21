@@ -11,7 +11,7 @@
     position: absolute;
     width: 50px;
     height: 50px;
-    animation: float 3s ease-in-out infinite;
+    animation: float-medium 3s ease-in-out infinite;
 }
 
 .pet-body {
@@ -22,7 +22,38 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-@keyframes float {
+.speed-controls {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.speed-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.speed-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.speed-button.active {
+    background-color: #ff69b4;
+    color: white;
+}
+
+@keyframes float-slow {
     0% {
         transform: translateX(0) translateY(0);
     }
@@ -38,4 +69,52 @@
     100% {
         transform: translateX(0) translateY(0);
     }
+}
+
+@keyframes float-medium {
+    0% {
+        transform: translateX(0) translateY(0);
+    }
+    25% {
+        transform: translateX(100px) translateY(-20px);
+    }
+    50% {
+        transform: translateX(200px) translateY(0);
+    }
+    75% {
+        transform: translateX(100px) translateY(20px);
+    }
+    100% {
+        transform: translateX(0) translateY(0);
+    }
+}
+
+@keyframes float-fast {
+    0% {
+        transform: translateX(0) translateY(0);
+    }
+    25% {
+        transform: translateX(100px) translateY(-20px);
+    }
+    50% {
+        transform: translateX(200px) translateY(0);
+    }
+    75% {
+        transform: translateX(100px) translateY(20px);
+    }
+    100% {
+        transform: translateX(0) translateY(0);
+    }
+}
+
+.pet.speed-slow {
+    animation: float-slow 5s ease-in-out infinite;
+}
+
+.pet.speed-medium {
+    animation: float-medium 3s ease-in-out infinite;
+}
+
+.pet.speed-fast {
+    animation: float-fast 1.5s ease-in-out infinite;
 } 
