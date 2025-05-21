@@ -1,0 +1,41 @@
+.class-pet-container {
+    width: 100%;
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+}
+
+.pet {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    animation: float 3s ease-in-out infinite;
+}
+
+.pet-body {
+    width: 100%;
+    height: 100%;
+    background-color: #ff69b4;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes float {
+    0% {
+        transform: translateX(0) translateY(0);
+    }
+    25% {
+        transform: translateX(100px) translateY(-20px);
+    }
+    50% {
+        transform: translateX(200px) translateY(0);
+    }
+    75% {
+        transform: translateX(100px) translateY(20px);
+    }
+    100% {
+        transform: translateX(0) translateY(0);
+    }
+} 
