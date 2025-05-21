@@ -12,6 +12,7 @@
     width: 50px;
     height: 50px;
     animation: float-medium 3s ease-in-out infinite;
+    z-index: 2;
 }
 
 .pet-body {
@@ -22,14 +23,20 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.speed-controls {
+.controls {
     position: absolute;
     bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
+    flex-direction: column;
     gap: 10px;
     z-index: 10;
+}
+
+.speed-controls {
+    display: flex;
+    gap: 10px;
 }
 
 .speed-button {
@@ -51,6 +58,70 @@
 .speed-button.active {
     background-color: #ff69b4;
     color: white;
+}
+
+.treat-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 20px;
+    background-color: #8B4513;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.treat-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #A0522D;
+}
+
+.treat {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-color: #8B4513;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.treat.falling {
+    animation: falling 1s ease-in forwards;
+}
+
+@keyframes falling {
+    0% {
+        transform: translateY(-20px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(150px);
+        opacity: 0.8;
+    }
+}
+
+.pet.eating {
+    animation: eating 1s ease-in-out;
+}
+
+@keyframes eating {
+    0% {
+        transform: translateY(0);
+    }
+    25% {
+        transform: translateY(-10px);
+    }
+    50% {
+        transform: translateY(0);
+    }
+    75% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
 }
 
 @keyframes float-slow {
